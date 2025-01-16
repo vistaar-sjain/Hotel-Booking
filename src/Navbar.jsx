@@ -6,7 +6,7 @@ const Navbar = () => {
   // Add a scroll listener to track when the user scrolls
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50); // Change state if scrolled more than 50px
+      setIsScrolled(window.scrollY > 150); // Change state if scrolled more than 50px
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -21,30 +21,31 @@ const Navbar = () => {
         isScrolled ? "bg-white/80 backdrop-blur-lg shadow-md" : "bg-transparent"
       }`}
     >
-      <div className="flex justify-between items-center py-5 px-10">
+      <div className="flex justify-between items-center py-4 px-10">
         {/* Logo Section */}
         <div>
-          <h1 className="text-2xl font-bold text-gray-800">Jadoo</h1>
+          <img src="https://cdn.prod.website-files.com/6170700f1a1db6b3a0ac16ed/617938cf6b1c7ac24443ab5a_Jadoo-travel-logo.svg" alt="" />
+          {/* <h1 className="text-2xl font-bold text-gray-800">Jadoo</h1> */}
         </div>
 
         {/* Navigation Links */}
         <div className="hidden md:flex gap-8 items-center">
-          <a href="#destinations" className="text-gray-700 hover:text-blue-600">
+          <a href="#destinations" className="text-gray-700 hover:text-amber-500">
             Destinations
           </a>
-          <a href="#hotels" className="text-gray-700 hover:text-blue-600">
+          <a href="#hotels" className="text-gray-700 hover:text-amber-500">
             Hotels
           </a>
-          <a href="#flights" className="text-gray-700 hover:text-blue-600">
+          <a href="#flights" className="text-gray-700 hover:text-amber-500">
             Flights
           </a>
-          <a href="#bookings" className="text-gray-700 hover:text-blue-600">
+          <a href="#bookings" className="text-gray-700 hover:text-amber-500">
             Bookings
           </a>
-          <button className="text-blue-600 border border-blue-600 px-4 py-2 rounded hover:bg-blue-600 hover:text-white">
+          <button className="text-black border border-black-600 px-4 py-2 rounded hover:bg-amber-500 hover:text-white">
             Login
           </button>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+          <button className=" text-black border px-4 py-2 rounded hover:bg-amber-500">
             Sign Up
           </button>
         </div>
