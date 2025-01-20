@@ -1,5 +1,6 @@
 import React from 'react';
-
+import Imagebox from './components/Imagebox';
+import CategoryTitle from './components/CategoryTitle';
 const Category = () => {
   // Array of card data
   const cardData = [
@@ -29,30 +30,28 @@ const Category = () => {
     },
   ];
 
+  const header = [
+  {
+    id: 1,
+    title: "Category",
+    subtitle: "We Offer Best Services",
+    layout : "center"
+  }]
   return (
-    <div className="">
+    <>    <div className="mt-16">
       {/* Header */}
-      <div className="items-center justify-center flex flex-col mt-16">
-        <p className="text-lg font-semibold">CATEGORY</p>
-        <p className="text-4xl text-center md:text-6xl mt-2 font-semibold">We offer Best Services</p>
-      </div>
+      {header.map((head) => (
+        <CategoryTitle key={head.id} title1={head.title} title2={head.subtitle} layout={head.layout}/>
+      ))}
 
       {/* Dynamic Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center justify-items-center gap-2 md:gap-7 mt-6 mx-16">
         {cardData.map((card) => (
-          <div
-            key={card.id}
-            className="w-[270px] rounded-3xl p-2 md:p-8 hover:scale-[1.1] ease-in duration-200 hover:shadow-2xl"
-          >
-            <div className="flex items-center justify-center my-6">
-              <img src={card.imgSrc} alt={card.title} className="h-[150px]" />
-            </div>
-            <p className="text-2xl my-4 text-center">{card.title}</p>
-            <p className="text-center">{card.description}</p>
-          </div>
+          <Imagebox key={card.id} imgSrc={card.imgSrc} title={card.title} description={card.description}/>
         ))}
       </div>
-    </div>
+    </div></>
+
   );
 };
 

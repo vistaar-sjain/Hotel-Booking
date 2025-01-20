@@ -1,0 +1,73 @@
+{
+  "/": {
+    "Jadoo": [
+      { "link": "Book your trip in minutes, get full control for much longer." }
+    ],
+    "Company": [
+      { "link": "About" },
+      { "link": "Careers" },
+      { "link": "Mobile" }
+    ],
+    "Contact": [
+      { "link": "Help/FAQ" },
+      { "link": "Press" },
+      { "link": "Affiliates" }
+    ],
+    "More": [
+      { "link": "Airline fees" },
+      { "link": "Airlines" },
+      { "link": "Low Fare Tips" }
+    ]
+  },
+  "/Destinations": {
+    "Explore": [
+      { "link": "Beach destinations" },
+      { "link": "Mountain getaways" },
+      { "link": "Cultural trips" }
+    ],
+    "Deals": [
+      { "link": "Last-minute deals" },
+      { "link": "Weekend getaways" },
+      { "link": "Family packages" }
+    ],
+    "qwerty": [
+      { "link": "Last-minute deals" },
+      { "link": "Weekend getaways" },
+      { "link": "Family packages" }
+    ]
+  },
+  "/Hotels": {
+    "Stay": [
+      { "link": "Luxury hotels" },
+      { "link": "Budget hotels" },
+      { "link": "Unique stays" }
+    ],
+    "Services": [
+      { "link": "Room service" },
+      { "link": "Spa packages" },
+      { "link": "Fitness centers" }
+    ],
+    "asdfg": [
+      { "link": "Room service" },
+      { "link": "Spa packages" },
+      { "link": "Fitness centers" }
+    ]
+  },
+  "/Flights": {
+    "Stay": [
+      { "link": "Luxury hotels" },
+      { "link": "Budget hotels" },
+      { "link": "Unique stays" }
+    ],
+    "Services": [
+      { "link": "Room service" },
+      { "link": "Spa packages" },
+      { "link": "Fitness centers" }
+    ],
+    "asdfg": [
+      { "link": "Room service" },
+      { "link": "Spa packages" },
+      { "link": "Fitness centers" }
+    ]
+  }
+}

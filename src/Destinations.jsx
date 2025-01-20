@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import CategoryTitle from './components/CategoryTitle';
 
-const Testimonials = () => {
+const Destinations = () => {
   const cards = [
     {
       imgSrc:
@@ -112,4 +112,4 @@ const Testimonials = () => {
   );
 };
 
-export default Testimonials;
+export default Destinations;
