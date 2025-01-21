@@ -1,115 +1,57 @@
-import React, { useState } from "react";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import CategoryTitle from './components/CategoryTitle';
+import React, { useState, useEffect } from 'react';
 
-const Destinations = () => {
-  const cards = [
-    {
-      imgSrc:
-        "https://cdn.pixabay.com/photo/2021/09/20/03/24/skeleton-6639547_1280.png",
-      quote: `On the Windows talking painted pasture yet its express parties use. Sure last upon he same as knew next. Of believed or diverted no.`,
-      name: "Chris Thomas",
-      location: "Mumbai, India",
-    },
-    {
-      imgSrc:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmzdQBVzjU0TXBzAZlhnuzLeNNwrtMnqYPcg&s",
-      quote: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla auctor interdum neque.`,
-      name: "Alice Smith",
-      location: "New York, USA",
-    },
-    {
-      imgSrc:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIqO4BvvzIaRR17qdLgDPp2MdD4odVN_bvhw&s",
-      quote: `Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.`,
-      name: "John Doe",
-      location: "London, UK",
-    },
-    // Add more cards as needed
-  ];
+function Destinations() {
+  const [data, setData] = useState(null);
 
-  const header = [
-    {
-      id: 1,
-      title: " Testimonials",
-      subtitle: "What People Say About Us",
-      layout: "left"
-      }, 
-  ];
+  useEffect(() => {
+    // Check if data is already in localStorage
+    const storedData = localStorage.getItem('apiData');
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+    if (storedData) {
+      // If data exists in localStorage, use it
+      setData(JSON.parse(storedData));
+    } else {
+      // If no data in localStorage, fetch it from the API
+      fetch('https://jsonplaceholder.typicode.com/todos')
+        .then((response) => response.json())
+        .then((fetchedData) => {
+          setData(fetchedData); // Update state
+          localStorage.setItem('apiData', JSON.stringify(fetchedData)); // Store in localStorage
+        })
+        .catch((error) => {
+          console.error('Error fetching data:', error);
+        });
+    }
+  }, []); 
 
-  // Handle moving up and down
-  const moveUp = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? cards.length - 1 : prevIndex - 1
-    );
-  };
-
-  // Handle moving down (infinite scroll)
-  const moveDown = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === cards.length - 1 ? 0 : prevIndex + 1
-    );
-  };
   return (
-    <>
-      <div className=" mt-10 mx-10 md:p-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-6">
-          {header.map((head) => (
-            <CategoryTitle
-              key={head.id}
-              title1={head.title}
-              title2={head.subtitle}
-              cssprop={head.css}
-              layout={head.layout}
-            />
-          ))}
-          {/* Card content */}
-          <div className="relative flex">
-            <div className="w-full">
-              <div className="relative">
-                <div className="absolute top-[-30px] left-[-20px] rounded-full h-[100px]">
-                  <img
-                    src={cards[currentIndex].imgSrc}
-                    alt=""
-                    className="h-[80px] w-[80px] rounded-full object-cover"
-                  />
-                </div>
-                <div className="p-6 shadow-2xl">
-                  <p className="text-lg text-slate-700 mt-9">
-                    "{cards[currentIndex].quote}"
-                  </p>
-                  <p className="mt-7 text-lg text-slate-700">
-                    {cards[currentIndex].name}
-                  </p>
-                  <p className="text-lg mt-2 text-slate-700">
-                    {cards[currentIndex].location}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="w-[30px] p-4 gap-6 mt-16">
-              <a
-                className="text-3xl hover:text-amber-500 active:text-amber-700"
-                onClick={moveUp}
-              >
-                <IoIosArrowUp />
-              </a>
-              <br />
-              <a
-                className="text-3xl hover:text-amber-500 active:text-amber-700"
-                onClick={moveDown}
-              >
-                <IoIosArrowDown />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+    <div>
+      <table className='mt-24  flex flex-col'>
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>To Do</th>
+            <th>Checked</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data ? (
+            data.map((item) => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.title}</td>
+                <td>{item.completed ? 'Yes' : 'No'}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="3">Loading...</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    </div>
   );
-};
+}
 
 export default Destinations;
