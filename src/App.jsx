@@ -6,6 +6,7 @@ import MainNavbar from "./components/MainNavbar";
 import FooterComponent from "./components/FooterComponent";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Destinations from "./Destinations";
+import Hotels from "./Hotels";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           }
         />
         <Route path="/Destinations" element={<Destinations />} />
+        <Route path="/Hotels" element={<Hotels />} />
       </Routes>
       <FooterComponent />
     </Router>
